@@ -1,6 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    // Hilt. Injection of dependencies
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
+    // ObjectBox. Local database
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.objectbox)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -52,4 +59,22 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    // Hilt. Injection of dependencies
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.kotlinx.serialization.json)
+    // Material de Navegacion
+    implementation(libs.androidx.navigation.compose)
+    // OkHttp (logging solo se activa en el flavor dev)
+    implementation(libs.okhttp.logging)
+    // Datastore: For token storage
+    implementation(libs.androidx.datastore.preferences)
+    // ObjectBox: show database in debug
+    debugImplementation(libs.objectbox.android.objectbrowser)
+    releaseImplementation(libs.objectbox.android)
+    // Icons Lucide
+    implementation(libs.lucide.icons)
 }
